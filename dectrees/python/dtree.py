@@ -1,4 +1,5 @@
 import math
+import monkdata as m
 
 
 def entropy(dataset):
@@ -132,3 +133,35 @@ def allPruned(tree):
             b[v] = r
             alternatives += (TreeNode(tree.attribute, b, tree.default),)
     return alternatives
+
+
+def main():
+    
+    # print("Entropy of the training set monk1: %.5f" % entropy(m.monk1))
+    # print("Entropy of the training set monk2: %.5f" % entropy(m.monk2))
+    # print("Entropy of the training set monk3: %.5f" % entropy(m.monk3))
+
+    # for i in range(6):
+    #     print("Information gain in attribute %d training set monk1: %.5f" % (i, averageGain(m.monk1, m.attributes[i])))
+   
+    # print("\n")
+    # for i in range(6):
+    #     print("Information gain in attribute %d training set monk2: %.5f" % (i, averageGain(m.monk2, m.attributes[i])))
+    # print("\n")
+    # for i in range(6):
+    #     print("Information gain in attribute %d training set monk3: %.5f" % (i, averageGain(m.monk3, m.attributes[i])))
+
+    # split monk1 dataset
+    subset1_monk1 = select(m.monk1, m.attributes[4],3)
+    # information gain on all attributes in subset1_monk1
+    for i in range(6):
+        print("Information gain in attribute %d training set subset1_monk1: %.5f" % (i, averageGain(subset1_monk1, m.attributes[i])))
+
+
+    # Information gains for monk1 dataset to results
+
+    # benchmark
+    # t = buildTree(m.monk1, m.attributes)
+    # print(check(t, m.monk1test))
+if __name__ == "__main__":        
+    main()
